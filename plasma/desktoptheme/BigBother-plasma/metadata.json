@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "kde-artists@kde.org",
+                "Name": "KDE Visual Design Group",
+            }
+        ],
+        "Category": "",
+        "Description": "Breeze by the KDE VDG",
+        "EnabledByDefault": true,
+        "Id": "BigBother-plasma",
+        "License": "LGPL",
+        "Name": "BigBother-plasma",
+        "Version": "@KF6_MIN_VERSION@",
+        "Website": "https://plasma.kde.org"
+    },
+    "X-Plasma-API": "5.0"
+}
