@@ -1,10 +1,12 @@
-{ lib, stdenv, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub, pkgs }:
 
 stdenv.mkDerivation rec {
   pname = "bb-kde-theme";
   version = "123";
 
-  src = self;
+  nativeBuildInputs = with pkgs; [ imagemagick ];
+
+  src = ./.;
 
   makeFlags = [ "PREFIX=$(out)" ];
 

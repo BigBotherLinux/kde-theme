@@ -36,13 +36,13 @@ _rm() {
     sudo rmdir -p "$(dirname "$1")" 2>/dev/null || true
 }
 
-_download() {
-    _msg "Getting the latest version from GitHub ..."
-    wget -O "$temp_file" \
-        "https://github.com/PapirusDevelopmentTeam/$gh_repo/archive/$TAG.tar.gz"
-    _msg "Unpacking archive ..."
-    tar -xzf "$temp_file" -C "$temp_dir"
-}
+# _download() {
+#     _msg "Getting the latest version from GitHub ..."
+#     wget -O "$temp_file" \
+#         "https://github.com/PapirusDevelopmentTeam/$gh_repo/archive/$TAG.tar.gz"
+#     _msg "Unpacking archive ..."
+#     tar -xzf "$temp_file" -C "$temp_dir"
+# }
 
 _uninstall() {
     _msg "Deleting $gh_desc ..."
@@ -59,12 +59,8 @@ _uninstall() {
     _rm "$PREFIX/share/Kvantum/ArcDarker"
     _rm "$PREFIX/share/plasma/desktoptheme/Arc-Dark"
     _rm "$PREFIX/share/plasma/desktoptheme/Arc-Color"
-    _rm "$PREFIX/share/plasma/look-and-feel/com.github.varlesh.arc-dark"
-    _rm "$PREFIX/share/plasma/look-and-feel/com.github.varlesh.arc-darker"
-    _rm "$PREFIX/share/plasma/look-and-feel/com.github.varlesh.arc"
-    _rm "$PREFIX/share/wallpapers/Arc"
-    _rm "$PREFIX/share/wallpapers/Arc-Dark"
-    _rm "$PREFIX/share/wallpapers/Arc-Mountains"
+    _rm "$PREFIX/share/plasma/look-and-feel/com.github.bigbotherlinux.kde-theme"s
+    _rm "$PREFIX/share/wallpapers/BigBother"
     _rm "$PREFIX/share/yakuake/skins/arc"
     _rm "$PREFIX/share/yakuake/skins/arc-dark"
 }
@@ -97,7 +93,7 @@ temp_file="$(mktemp -u)"
 temp_dir="$(mktemp -d)"
 
 if [ "$uninstall" = "false" ]; then
-    _download
+    # _download
     _uninstall
     _install
 else
