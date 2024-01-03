@@ -18,17 +18,23 @@
 
   in
   {
-    packages.${system}.bb-kde-theme = bb-kde-theme;
+    packages.${system} = {
+    bb-kde-theme = bb-kde-theme;
 
     defaultPackage.${system} = bb-kde-theme;
 
-    homeManagerConfigurations = {
-      # Example Home Manager configuration
-      example = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        configuration = { config, pkgs, ... }: {
-          # Your Home Manager configuration
-        };
+    gust-cursor-theme = pkgs.stdenv.mkDerivation {
+        name = "gust-cursor-theme";
+        src = ./cursors/Gust;
+        nativeBuildInputs = with pkgs; [ inkscape xorg.xcursorgen bash ];
+      
+        buildPhase = ''
+          # Inkscape will fail writing to the home directory with a permission denied error.. This is just to suppress that error
+          export HOME=/tmp
+          
+          bash ./build.sh
+          cp -r Gust/ $out
+        '';
       };
     };
   };
